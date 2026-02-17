@@ -1,0 +1,32 @@
+
+/*
+.fwlist {
+    list-style-type: none;
+    text-decoration: none;
+}
+.fwlist li a {
+    color: #fff;
+}
+.fwlist li a:hover {
+    text-decoration: underline;
+}
+
+.fwlist li:not(:last-child) {
+    margin-bottom: 10px;
+} */
+
+.list-text {
+    list-style-type: none;
+}
+
+.list-links {
+    list-style-type: none;
+}
+.list-links li a {
+    color: #fff;
+    text-decoration: none;
+}
+.list-links li a:hover {
+    text-decoration: underline;
+}
+

@@ -1,0 +1,44 @@
+
+/* Header and Footer */
+header, footer {
+    background-color: #111111;
+    color: #fff;
+    width: 100%;
+}
+
+header a, footer a {
+    font-family: Arial, sans-serif;
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: white; /* Optional: set your preferred color */
+}
+
+.head_foot-container {
+    max-width: 1400px; /* You control how far the content can go. */
+    margin: 0 auto;
+    padding: 0.19%;
+    /* 20px */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1, footer h1 {
+    font-size: 1.8rem;
+}
+
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .head_foot-container h1 {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .head_foot-container h1 {
+        font-size: 1.5rem;
+    }
+}

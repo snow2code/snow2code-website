@@ -1,0 +1,16 @@
+RewriteEngine On
+Options -Indexes
+
+# --- 1. Remove .php extension ---
+# If "file.php" exists, rewrite "/file" → "/file.php"
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.+?)/?$ $1.php [L,QSA]
+
+# --- 2. If it's a real directory, use custom directory listing ---
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.+?)/?$ /_hidden/dirlist.php?path=$1 [L,QSA]
+
+# --- 3. If not a real file or dirctory, send 404 ---
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ /_hidden/err404.php [L]
