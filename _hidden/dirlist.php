@@ -1,6 +1,7 @@
 <?php
 $base = realpath(__DIR__ . '/../');
-$path = isset($_GET['path']) ? $_GET['path'] : '';
+// $path = isset($_GET['path']) ? $_GET['path'] : '';
+$path = $_GET['path'] ?? '';
 
 $dir = realpath($base . '/' . $path);
 $files = null;
@@ -78,7 +79,9 @@ function getFileSizeFormatted(string $filePath): string {
         <meta name="description" content="Snowy's Website - Directory Listing">
         <meta name="author" content="Lyn Snow">
 
-        <title>Document</title>
+        <?php
+        echo "<title>Index of $indexOfText</title>"
+        ?>
 
         <style>
             h1 {

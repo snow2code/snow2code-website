@@ -14,10 +14,10 @@ include_once '../globals.php';
         <meta name="robots" content="max-image-preview:large">
         <meta name="language" content="English">
         
-        <meta name="description" content="Snowy's Website Home Page">
+        <meta name="description" content="Snowy's Website - Error 503">
         <meta name="author" content="Lyn Snow">
 
-        <title>Document</title>
+        <title>Error: 503</title>
 
         <!-- Stylesheets -->
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,700,800" rel="stylesheet">

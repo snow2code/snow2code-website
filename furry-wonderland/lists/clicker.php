@@ -14,10 +14,10 @@ include_once '../../globals.php';
         <meta name="robots" content="max-image-preview:large">
         <meta name="language" content="English">
         
-        <meta name="description" content="Snowy's Website Home Page">
+        <meta name="description" content="Snowy's Website - Furry Wonderland">
         <meta name="author" content="Lyn Snow">
 
-        <title>Document</title>
+        <title>FW Clicker List</title>
 
         <!-- Stylesheets -->
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,700,800" rel="stylesheet">
@@ -35,9 +35,19 @@ include_once '../../globals.php';
 
         <!-- Put content here. -->
         <main>
-            <h1>Whatever</h1>
+            <h1>Clicker Trained</h1>
             
-            <p>Whatever bullshit</p>
+            <p>The offical Clicker Trained list</p>
+            <br><br>
+
+            <ul class="list-text list-spacer-very-small" style="margin-bottom: 10px;">
+                <li> <p>Snowy</p> </li>
+                <li> <p>Natalie(?)</p> </li>
+                <li> <p>Leo</p> </li>
+                <li> <p>Verton</p> </li>
+
+                <!-- <li> <p></p> </li> -->
+            </ul>
         </main>
 
         <!-- <?php displaySpacer(750) ?> -->

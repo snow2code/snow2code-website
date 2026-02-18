@@ -14,10 +14,10 @@ include_once '../../globals.php';
         <meta name="robots" content="max-image-preview:large">
         <meta name="language" content="English">
         
-        <meta name="description" content="Snowy's Website Home Page">
+        <meta name="description" content="Snowy's Website - Furry Wonderland">
         <meta name="author" content="Lyn Snow">
 
-        <title>Document</title>
+        <title>FW Fluffy List</title>
 
         <!-- Stylesheets -->
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,700,800" rel="stylesheet">
@@ -35,9 +35,17 @@ include_once '../../globals.php';
 
         <!-- Put content here. -->
         <main>
-            <h1>Whatever</h1>
+            <h1>Fluffy List</h1>
             
-            <p>Whatever bullshit</p>
+            <p>The offical fluffy list by Kapi</p>
+            <br><br>
+
+            <ol class="list-number list-spacer-very-small" style="margin-bottom: 10px;">
+                <li> <p>Kapi</p> </li>
+                <li> <p>Snowy</p> </li>
+            
+                <!-- <li> <p></p> </li> -->
+            </ol>
         </main>
 
         <!-- <?php displaySpacer(750) ?> -->

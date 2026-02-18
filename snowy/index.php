@@ -14,10 +14,10 @@ include_once '../globals.php';
         <meta name="robots" content="max-image-preview:large">
         <meta name="language" content="English">
         
-        <meta name="description" content="Snowy's Website - Error 500">
+        <meta name="description" content="Snowy's Website Home Page">
         <meta name="author" content="Lyn Snow">
 
-        <title>Error: 500</title>
+        <title>Document</title>
 
         <!-- Stylesheets -->
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,700,800" rel="stylesheet">
@@ -30,19 +30,29 @@ include_once '../globals.php';
         <!-- <link rel="stylesheet" href="/content/css/nav.css"> -->
     </head>
     <body>
-        <!-- display($pageHeader) and spacer -->
         <?php display($pageHeaderNFooter) ?>
         <?php displaySpacer(50) ?>
 
         <!-- Put content here. -->
         <main>
-            <!-- getContent("home") -->
+            <h1>Whatever</h1>
             
-            <h1>500</h1>
-            <h2>Internal Server Error</h2>
-            <p>The server was unable to complete your request. Please try again later.</p>
+            <p>Whatever bullshit</p>
+            <br><br>
+
+            <ul class="list-links list-spacer-medium">
+                <li> <a href="/furry-wonderland/snow2code-info">Furry Wonderland Info</a> </li>
+                <li> <a href="info">Info</a> </li>
+                <li> <a href="characters">Characters</a> </li>
+
+                <!-- <li> <a href=""></a> </li> -->
+            </ul>
         </main>
 
+        <!-- <?php displaySpacer(750) ?> -->
         <?php display($pageHeaderNFooter) ?>
+
+
+        <script src="/content/js/nav.js"></script>
     </body>
 </html>

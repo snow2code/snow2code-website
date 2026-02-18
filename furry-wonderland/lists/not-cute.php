@@ -14,10 +14,10 @@ include_once '../../globals.php';
         <meta name="robots" content="max-image-preview:large">
         <meta name="language" content="English">
         
-        <meta name="description" content="Snowy's Website Home Page">
+        <meta name="description" content="Snowy's Website - Furry Wonderland">
         <meta name="author" content="Lyn Snow">
 
-        <title>Document</title>
+        <title>FW Not Cute List</title>
 
         <!-- Stylesheets -->
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,700,800" rel="stylesheet">
@@ -35,21 +35,23 @@ include_once '../../globals.php';
 
         <!-- Put content here. -->
         <main>
-            <h1>Whatever</h1>
-            
-            <p>Whatever bullshit</p>
-            
-            <ul class="list-text list-spacer-small" style="margin-bottom: 10px;">
-                <!-- Dammy first, then snowy. -->
-                <li> Dammy</p> </li>
-                <li> Snowy</p> </li>
+            <h1>Not Cute List</h1>
 
+            <p>The offical not cute list</p>
+            <br><br>
+
+            <ul class="list-text list-spacer-very-small" style="margin-bottom: 10px;">
+                <!-- Dammy first, then snowy. -->
+                <li> <p>Dammy</p> </li> 
+                <li> <p>Snowy</p> </li>
+                <br>
                 <!-- Now staff. -->
                 <li> <p>Short Circuit</p> </li>
                 <li> <p>Mango (Silly Fluffy Ball)</p> </li>
                 <li> <p>Abrams</p> </li>
                 <li> <p>Staff Kisser / FoxyOwO</p> </li>
                 <li> <p>FreddyCR</p> </li>
+                <li> <p>Arctic (Milo)</p> </li>
                 <li> <p>Jacob the Sleepy Ice Derg</p> </li>
 
                 <!-- Now the community. -->
@@ -64,6 +66,7 @@ include_once '../../globals.php';
 
                 <!-- <li> <p></p> </li> -->
             <ul>
+            <br><br><br>
         </main>
 
         <!-- <?php displaySpacer(750) ?> -->

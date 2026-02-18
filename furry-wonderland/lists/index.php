@@ -17,7 +17,10 @@ include_once '../../globals.php';
         <meta name="description" content="Snowy's Website Home Page">
         <meta name="author" content="Lyn Snow">
 
-        <title>Document</title>
+        <meta name="description" content="Snowy's Website - Furry Wonderland">
+        <meta name="author" content="Lyn Snow">
+
+        <title>Furry Wonderland Lists</title>
 
         <!-- Stylesheets -->
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,700,800" rel="stylesheet">
@@ -40,6 +43,15 @@ include_once '../../globals.php';
             <p>Not BAD as it sounds. It’s just Not Cute List, Cute List and other upon request</p>
 
             <p>Important note, noone is added to the list UNLESS asked to be added, or requested to be added.</p>
+            <br><br>
+            <ul class="list-links">
+                <li> <a href="not-cute">Not Cute List</a> </li>
+                <li> <a href="cute">Cute List</a> </li>
+                <li> <a href="smol">Smol List</a> </li>
+                <li> <a href="fluffy">Fluffy List</a> </li>
+                <li> <a href="clicker">Clicker Trained List</a> </li>
+                <!-- <li> <a href=""></a> </li> -->
+            <ul>
         </main>
 
         <!-- <?php displaySpacer(750) ?> -->

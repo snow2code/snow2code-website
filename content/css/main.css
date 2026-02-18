@@ -65,6 +65,9 @@ main a:hover {
     clear:both;
 }
 
+.list-spacer-very-small li:not(:last-child) {
+    margin-bottom: 2px !important;
+}
 .list-spacer-small li:not(:last-child) {
     margin-bottom: 5px !important;
 }

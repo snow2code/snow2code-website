@@ -17,7 +17,7 @@ include_once 'globals.php';
         <meta name="description" content="Snowy's Website Home Page">
         <meta name="author" content="Lyn Snow">
 
-        <title>Document</title>
+        <title>Snowy Home Page</title>
 
         <!-- Stylesheets -->
         <link href="https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,700,800" rel="stylesheet">
