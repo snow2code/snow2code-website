@@ -65,61 +65,26 @@ function getUserIP() {
 function isMaintance() {
     $configUrl = "https://raw.githubusercontent.com/snow2code/snow2code-website/refs/heads/main/config.json";
     
-    if ( !ini_get("allow_url_fopen")) {
-        die("allow_url_fopen FFS SNWOY!");
-    }
-
-    try {
-        $configData = @file_get_contents($configUrl);
-
-        if ($configData === false) {
-            throw new Exception("Unable to fetch remote config file ;w;");
-        }
-
-        $config = json_decode($configData, true);
-
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new Exception("Invalid JSON data in config ;w;");
-        }
-
-
-        // finallyyy
-        echo $config['test'];
-    } catch (Exception $e) {
-        echo "shit " . $e->getMessage();
-    }
+    $ch = curl_init($configUrl);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true); // Verify SSL
+    curl_setopt($ch, CURLOPT_TIMEOUT, 10); // Timeout in seconds. -w-
     
-    // // Remote config file URL (must be HTTPS for security)
-    // $configUrl = "https://example.com/config.json";
+    $response = curl_exec($ch);
+    
+    if (curl_error($ch)) {
+        die("cURL error: " . curl_error($ch));
+    }
 
-    // // Check if allow_url_fopen is enabled
-    // if (!ini_get('allow_url_fopen')) {
-    //     die("Error: allow_url_fopen is disabled in PHP settings.");
-    // }
+    curl_close($ch);
+    
+    $config = json_decode($response, true);
 
-    // try {
-    //     // Fetch the remote file
-    //     $configData = @file_get_contents($configUrl);
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        die("invalid json format in config");
+    }
 
-    //     if ($configData === false) {
-    //         throw new Exception("Unable to fetch remote config file.");
-    //     }
-
-    //     // Decode JSON config
-    //     $config = json_decode($configData, true);
-
-    //     if (json_last_error() !== JSON_ERROR_NONE) {
-    //         throw new Exception("Invalid JSON format in config file.");
-    //     }
-
-    //     // Example usage
-    //     echo "Database Host: " . htmlspecialchars($config['db_host']) . "<br>";
-    //     echo "Database User: " . htmlspecialchars($config['db_user']) . "<br>";
-
-    // } catch (Exception $e) {
-    //     echo "Error: " . $e->getMessage();
-    // }
-
+    echo $config['test'];
 }
 
 // function getFileContentsSafe($link)
