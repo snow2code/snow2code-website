@@ -45,6 +45,11 @@ include_once 'globals.php';
             <p>Discord - snow2code</p>
 
             <br><br><br>
+            <p id="test">
+                <?php
+                    echo isMaintance();
+                ?>
+            </p>
         </main>
 
         <!-- <?php displaySpacer(750) ?> -->
