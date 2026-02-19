@@ -50,6 +50,41 @@ function isMobile() {
     return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
 }
 
+/**
+ * Fetch a remote config file without caching.
+ * Supports JSON, INI, or plain text formats.
+ */
+
+function fetchRemoteConfig($url) {
+    if (!filter_var($url, FILTER_VALIDATE_URL)) {
+        throw new InvalidArgumentException("Invalid URL provided.");
+    }
+
+    // Append a unique query parameter to bypass browser/proxy caches
+    $urlWithNoCache = $url . (strpos($url, '?') === false ? '?' : '&') . 'nocache=' . microtime(true);
+
+    // Create a stream context with no-cache headers
+    $context = stream_context_create([
+        'http' => [
+            'method' => 'GET',
+            'header' => "Cache-Control: no-cache, must-revalidate\r\nPragma: no-cache\r\n",
+            'timeout' => 10 // seconds
+        ]
+    ]);
+
+    // Disable PHP's own URL fopen cache
+    clearstatcache(true, $urlWithNoCache);
+
+    $data = @file_get_contents($urlWithNoCache, false, $context);
+
+    if ($data === false) {
+        $error = error_get_last();
+        throw new RuntimeException("Failed to fetch remote config: " . ($error['message'] ?? 'Unknown error'));
+    }
+
+    return $data;
+}
+
 // We are only using you for mainetence page -w-
 function getUserIP() {
     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
@@ -65,26 +100,20 @@ function getUserIP() {
 function isMaintance() {
     $configUrl = "https://raw.githubusercontent.com/snow2code/snow2code-website/refs/heads/main/config.json";
     
-    $ch = curl_init($configUrl);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true); // Verify SSL
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10); // Timeout in seconds. -w-
-    
-    $response = curl_exec($ch);
-    
-    if (curl_error($ch)) {
-        die("cURL error: " . curl_error($ch));
+    // Example usage:
+    try {
+        $configContent = fetchRemoteConfig($configUrl);
+
+        // If JSON config
+        $config = json_decode($configContent, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new RuntimeException("Invalid JSON in config file.");
+        }
+
+        print_r($config['test']);
+    } catch (Exception $e) {
+        echo "Error: " . $e->getMessage();
     }
-
-    curl_close($ch);
-    
-    $config = json_decode($response, true);
-
-    if (json_last_error() !== JSON_ERROR_NONE) {
-        die("invalid json format in config");
-    }
-
-    echo $config['test'];
 }
 
 // function getFileContentsSafe($link)
