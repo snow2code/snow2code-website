@@ -1,5 +1,6 @@
 <?php
 
+// == START OF PAGE STUFF ==
 $stylesheets = <<<EOD
 <link rel="stylesheet" href="/content/css/footer.css">
 <link rel="stylesheet" href="/content/css/list.css">
@@ -46,46 +47,16 @@ function displaySpacer($amount)
     echo "<div style='height: " . $amount . "px'></div>";
 }
 
-function isMobile() {
-    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+// == END OF PAGE STUFF ==
+// == START OF MAIN STUFF ==
+
+function readConfig() {
+    $configFile = __DIR__ . '/config.ini';
+    print_r($configFile);
 }
 
-/**
- * Fetch a remote config file without caching.
- * Supports JSON, INI, or plain text formats.
- */
 
-function fetchRemoteConfig($url) {
-    if (!filter_var($url, FILTER_VALIDATE_URL)) {
-        throw new InvalidArgumentException("Invalid URL provided.");
-    }
-
-    // Append a unique query parameter to bypass browser/proxy caches
-    $urlWithNoCache = $url . (strpos($url, '?') === false ? '?' : '&') . 'nocache=' . microtime(true);
-
-    // Create a stream context with no-cache headers
-    $context = stream_context_create([
-        'http' => [
-            'method' => 'GET',
-            'header' => "Cache-Control: no-cache, must-revalidate\r\nPragma: no-cache\r\n",
-            'timeout' => 10 // seconds
-        ]
-    ]);
-
-    // Disable PHP's own URL fopen cache
-    clearstatcache(true, $urlWithNoCache);
-
-    $data = @file_get_contents($urlWithNoCache, false, $context);
-
-    if ($data === false) {
-        $error = error_get_last();
-        throw new RuntimeException("Failed to fetch remote config: " . ($error['message'] ?? 'Unknown error'));
-    }
-
-    return $data;
-}
-
-// We are only using you for mainetence page -w-
+// We are only using you for maintence page -w-
 function getUserIP() {
     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
         $ip = $_SERVER['HTTP_CLIENT_IP'];
@@ -97,24 +68,30 @@ function getUserIP() {
     return $ip;
 }
 
+
 function isMaintance() {
-    $configUrl = "https://raw.githubusercontent.com/snow2code/snow2code-website/refs/heads/main/config.json";
+    readConfig();
+    // $configUrl = "https://raw.githubusercontent.com/snow2code/snow2code-website/refs/heads/main/config.json?nocache=true";
     
-    // Example usage:
-    try {
-        $configContent = fetchRemoteConfig($configUrl);
+    // $configContext = fetchRemoteConfig($configUrl);
 
-        // If JSON config
-        $config = json_decode($configContent, true);
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            throw new RuntimeException("Invalid JSON in config file.");
-        }
+    // $config = json_decode($configContext, true);
 
-        print_r($config['test']);
-    } catch (Exception $e) {
-        echo "Error: " . $e->getMessage();
-    }
+    // if (json_last_error() !== JSON_ERROR_NONE) {
+    //     throw new RuntimeException("invalid json data in config qwq");
+    // }
+
+    // print_r($config['test']);
 }
+
+
+function isMobile() {
+    return preg_match("/(android|avantgo|blackberry|bolt|boost|cricket|docomo|fone|hiptop|mini|mobi|palm|phone|pie|tablet|up\.browser|up\.link|webos|wos)/i", $_SERVER["HTTP_USER_AGENT"]);
+}
+
+// == END OF MAIN STUFF ==
+
+
 
 // function getFileContentsSafe($link)
 // {
